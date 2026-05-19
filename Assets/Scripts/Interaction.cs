@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Interaction : MonoBehaviour
 {
@@ -17,9 +18,13 @@ public class Interaction : MonoBehaviour
             return;
         //O raycast bateu em algo
     }
-    public void OnInteract()
+    public void OnInteract(InputValue value)
     {
-        if (_target.collider == null)
+        if (_target.collider == null)//Nullcheck
             return;
+        if (!_target.collider.TryGetComponent(out IInteractable interactable))
+            return;
+
+        interactable.Interact();
     }
 }

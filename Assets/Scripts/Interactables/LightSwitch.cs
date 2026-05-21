@@ -1,11 +1,26 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Outline))]
 public class LightSwitch : MonoBehaviour, IInteractable
 {
     [SerializeField] private bool _isOn;
     [SerializeField] private UnityEvent OnTurnOn;
     [SerializeField] private UnityEvent OnTurnOff;
+    private Outline _outline;
+
+    private void Start()
+    {
+        _outline = GetComponentInChildren<Outline>();
+        _outline.enabled = false;
+    }
+    public void HideOutline()
+    {
+        if (_outline != null)
+        {
+            _outline.enabled = false;
+        }
+    }
 
     public void Interact()
     {
@@ -19,5 +34,13 @@ public class LightSwitch : MonoBehaviour, IInteractable
         }
         _isOn = !_isOn;
         //Animação do interruptor mudando o botão
+    }
+
+    public void ShowOutline()
+    {
+        if (_outline != null)
+        {
+            _outline.enabled = true;
+        }
     }
 }

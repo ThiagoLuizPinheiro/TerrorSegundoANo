@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }//Singleton
+    public UnityEvent OnUseBattery;
     //public GameObject Player { get => player;}
 
     //[SerializeField] private GameObject player;
@@ -10,11 +12,5 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         Instance = this;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

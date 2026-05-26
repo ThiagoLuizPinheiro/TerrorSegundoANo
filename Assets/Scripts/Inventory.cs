@@ -44,5 +44,15 @@ public class Inventory : MonoBehaviour
             return;
 
         _target.Collect();
+        //Como não temos nenhum outro item coletável, não precisamos diferenciar
+        _batteries++;
+    }
+    public void OnRecharge(InputValue value)
+    {
+        if(_batteries <= 0)//Se não tiver pilhas nem faça nada
+            return;
+
+        _batteries--;//Consome uma pilha
+        GameController.Instance.OnUseBattery.Invoke();
     }
 }

@@ -87,7 +87,8 @@ public class Enemy : MonoBehaviour
     IEnumerator Wait()
     {
         //Ainda temos que adicionar uma verificação para ver se ele finalizou a última rota
-        yield return new WaitForSeconds(_waitTime);
+        Debug.LogError("Temporário");
+        yield return new WaitForSeconds(_waitTime + 3);
         SetState(EnemyState.Patrolling);
     }
 }
